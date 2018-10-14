@@ -3,6 +3,8 @@ package com.speruri.rest.listners;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
 import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
 import org.springframework.context.annotation.Bean;
@@ -14,12 +16,15 @@ import io.micrometer.core.instrument.Metrics;
 @Component
 public class FlagPickerEndpoint {
 
+	private static Logger LOGGER = LoggerFactory.getLogger(FlagPickerEndpoint.class);
+	
 	private Map<String, Object> map = new HashMap<>();
 
 	@Bean
 	@ReadOperation
 	public Map showMetrics() {
 		
+		LOGGER.debug("Sending Metrics..");
 		//Continent Metrics
 		map.put("continent.insert.count", Metrics.counter("continent.insert.count", "type", "continent").count());
 		map.put("continent.search.count", Metrics.counter("continent.search.count", "type", "continent").count());
