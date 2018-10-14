@@ -1,1 +1,2 @@
-# challenges
+# Flag Picker Challenge
+
