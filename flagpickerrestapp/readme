@@ -1,1 +1,40 @@
-This is a Flag picker challange which was implemented with Spring boot 2
+Flag Picker Challenge
+
+Core Implementation
+	Implemented using Spring Boot 2
+	Used Spring Data with JPA to access the DB using the JpaRepository. 
+	Implemented using MVC patterns with some java 8 lambda expressions and streams
+	Created a service layer for handling the interactions with DB.
+	Customized the service layer with some custom methods in the service interfaces.
+	Created Controllers to handle the requests to the REST endpoints.
+	Implemented all the CRUD implementations.
+	Implemented the search endpoint for countries and continents based on the parameters.
+	Used H2 in-memory DB for testing purposes. We can also configure other RDBMS like MySQL, PostgreSQL..etc by making some config changes in the application.properties file
+	Used the Spring Actuator for profiling, metrics of the application
+	Created a custom endpoint (actuator/appmetrics) to get the count of how many inserts/deletes/searches on the objects. This is all done using the EntityListeners and Metrics of Spring Actuator.
+	Exposed only certain endpoints of metrics making app secure with configuration.
+	Created the schema.sql as well for in-memory DB/MySQL. Data is from the JSON file you provided.
+	Handled the Exceptions with CustomExceptionHandlers with @ControllerAdvice. Also handled Field Level Errors. For example, when record inserted without a mandatory field, it throws an exception saying that the field is mandatory. Its all dynamic in nature.
+	Added loggers.
+	Added BootupTasks that will have an init methods which will get called once created by Spring IOC. It populates all the test data needed for our testing. Also added checks to insert only if not empty.
+	
+Test Cases
+	Followed TDD (Test Driven Development) while developing the implementations.
+	Added various test cases for the create, search, delete endpoints.
+	Added System, Integration, JPA (for services) test cases using RestTemplate (acts like a postman to test the whole application flow), AssertJ(controller and services).
+	For System tests, the application should be in running state.
+	
+Running instructions
+	Just import the maven project into eclipse/intelliJ 
+	Just run the app with maven (mvn spring-boot:run from command line) or using the IDE (run FlagPickerRestApplication).
+	By default the H2 in-memory was configured in application.properties. You can even change it to MySQL (or other DB) by changing the spring.datasource configuration in application.properties
+	BootupTasks will take care of the data insertion from the json file provided.
+	
+Testing
+	Postman scripts are attached. You can import them and can test using postman.
+	Provided testcases for all the CRUD and search operations 
+	Metrics are provided with actuator/appmetrics endpoint
+	
+	
+	
+	
