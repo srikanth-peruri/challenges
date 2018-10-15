@@ -1,10 +1,10 @@
 package com.speruri.rest.service;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.speruri.rest.model.Continent;
 
-public interface ContinentService extends CrudRepository<Continent, Integer> {
+public interface ContinentService extends JpaRepository<Continent, Integer> {
 
 	Iterable<Continent> findContinentByContinent(String continent);
 
